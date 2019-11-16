@@ -1,0 +1,168 @@
+<!-- 展示用户提交的信息 需要服务类别确定该显示哪些字段 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="submit_order">
+        <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;background-color:#F1F1F1;padding-top:8rpx;padding-bottom:8rpx;">
+            <text style="color:red;font-size:28rpx;">可在"会员中心->我的订单"中修改填写的信息</text>
+        </view>
+        
+        <input type='name' name="service_id" value='{{service_id}}' style='display:none;'></input>
+        <!-- 购买会员单位类  单位全称、单位logo、联系人姓名、联系人电话、上传营业执照-->
+        <block wx:if="{{service_id >= 1}}">
+            <block wx:if="{{service_id <= 4}}">
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='请输入单位全称' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                    <input type='name' name="contact_name" placeholder='请输入联系人姓名' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                    <input type='number' name="contact_phone" placeholder='请输入联系人电话' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                    <label style='font-weight:bold;'>单位logo:</label>
+                    <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-type="1" bindtap="choose_and_upload_company"></image>
+                </view>
+                
+                <image style="border-radius:12rpx;" src="{{company_logo}}" data-img-url ="{{company_logo}}" bindtap="preview_img"></image>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                    <label style='font-weight:bold;'>营业执照:</label>
+                    <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-type="2" bindtap="choose_and_upload_company"></image>
+                </view>
+                
+                <image src="{{business_license}}" data-img-url ="{{business_license}}" bindtap="preview_img"></image>
+            </block>
+        </block>
+
+        <!-- service_id == 5 购买旅游投诉意见书 -->
+        <block wx:if="{{service_id == 5}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='请输入公司全称' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='请输入联系人姓名' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='请输入联系人电话' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view>
+                <label style='font-weight:bold;font-size:32rpx;'>问题描述:</label>
+                <textarea name="problem_desc" placeholder="请详细描述涉事方信息,事情的大致经过,目前的进展,希望我们提供什么帮助" style='border:1rpx solid #F1F1F1;width:100%;'></textarea>
+            </view>
+
+            <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
+                <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-service-id="{{service_id}}" bindtap="choose_and_upload"></image>
+                <text>已上传{{upload_file_num}}个文件</text>
+            </view>
+        </block>
+    
+        <!--  购买重大纠纷处理律师出面、旅游案件律师法院出庭： -->
+        <block wx:if="{{service_id == 6 || service_id == 7}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='请输入单位全称' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='请输入联系人姓名' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='请输入联系人电话' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view>
+                <label style='font-weight:bold;font-size:32rpx;'>问题描述:</label>
+                <textarea name="problem_desc" placeholder="请详细描述涉事方信息,事情的大致经过,目前的进展,希望我们提供什么帮助" style='border:1rpx solid #F1F1F1;width:100%;'></textarea>
+            </view>
+
+            <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
+                <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;"  data-service-id="{{service_id}}" bindtap="choose_and_upload"></image>
+                <text>已上传{{upload_file_num}}个文件</text>
+            </view>
+            <!-- 预约时间 -->
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预约时间:</label>
+                <picker mode="date" value="{{date}}" start="2019-03-01" end="2030-09-01" bindchange="bindDateChange" style="width:60%;">
+                    <input type="name" name="plan_date" value="{{plan_date}}" style='border:1rpx solid #F1F1F1;'>{{plan_date}}</input>
+                </picker>
+            </view>
+        </block>
+
+        <!-- 购买企业法律培训 8 -->
+        <block wx:if="{{service_id == 8}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                <input type='text' name="company_name" placeholder='请输入单位全称' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='text' name="contact_name" placeholder='请输入联系人姓名' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='请输入联系人电话' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <!-- 预约时间 -->
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预约时间:</label>
+                <picker mode="date" value="{{date}}" start="2019-03-01" end="2030-09-01" bindchange="bindDateChange">
+                    <input name="plan_date" type="name" value="{{plan_date}}" style='border:1rpx solid #F1F1F1;'>{{plan_date}}</input>
+                </picker>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>培训地点:</label>
+                <input type='text' name="plan_place" placeholder='请输入培训地点' value='{{plan_place}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预计培训人数:</label>
+                <input type='text' name="plan_num" placeholder='请输入培训人数' value='{{plan_num}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+        </block>
+
+        <!-- 导游法律咨询服务 9 -->
+        <block wx:if="{{service_id == 9}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='联系人姓名' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='联系人电话' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;" bindtap='upload_logo'>
+                <label style='font-weight:bold;font-size:32rpx;'>导游证:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-service-id="{{service_id}}" bindtap="choose_and_upload"></image>
+            </view>
+
+            <image src="{{daoyou_license_url}}" style="width:100%;"></image>
+        </block>
+
+        <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+            <button form-type='submit' style='width:100%;background-color:green;color:white;'>提交</button>
+        </view>
+    </form>
+</view>

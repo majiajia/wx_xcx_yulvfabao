@@ -1,0 +1,112 @@
+<view>
+    <block wx:if="{{user_type == 1}}">
+        <view class="userinfo">
+            <block wx:if="{{user_info_exist}}">
+                <image class='userinfo-avatar' src="{{user_avatar}}"></image>
+                <text class="userinfo-nickname">{{user_name}}</text>
+            </block>
+            <block wx:else>
+                <image class="userinfo-avatar" src="../../imgs/my_order.png" mode="cover"></image>
+                <text class="userinfo-nickname">暂无</text>
+                <button open-type="getUserInfo" size='mini' type='primary' bindgetuserinfo="get_user_info">获取头像昵称</button>
+            </block>
+        </view>
+    </block>
+
+    <block wx:if="{{user_type == 2}}">
+        <view class="memberinfo">
+            <view>
+                <image class="userinfo-avatar" src="{{company_logo}}" mode="cover"></image>
+            </view>
+            <view style="display:flex;flex-direction:column;justify-content:space-around;font-size:28rpx;padding-top:20rpx;padding-bottom:20rpx;width:100%;">
+                <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-right:40rpx;'>
+                    <text style='font-size:32rpx;'>{{company_name}}</text>
+                    <image src='../../imgs/modify.png' style='width:32rpx;height:32rpx;border-radius:12rpx;' bindtap='nav_to_update_member_info'></image>
+                </view>
+                <block wx:if="{{member_type == 1}}">
+                    <text style='font-size:28rpx;'>国内社法律顾问单位</text>
+                </block>
+                <block wx:elif="{{member_type == 2}}">
+                    <text style='font-size:28rpx;'>出境社法律顾问单位</text>
+                </block>
+                <block wx:elif="{{member_type == 3}}">
+                    <text style='font-size:28rpx;'>景区法律顾问单位</text>
+                </block>
+                <block wx:elif="{{member_type == 4}}">
+                    <text style='font-size:28rpx;'>旅行社门店法律顾问单位</text>
+                </block>
+            </view>
+            <!-- <view>
+                <image class="memberinfo-mofidy-button" src="../../imgs/modify.png"></image>
+            </view> -->
+        </view>
+    </block>
+    <block wx:if="{{user_type == 3}}">
+        <view class="memberinfo">
+            <view>
+                <image class="userinfo-avatar" src="{{user_avatar}}" mode="cover"></image>
+            </view>
+            <view style="display:flex;flex-direction:column;justify-content:space-around;font-size:28rpx;padding-top:20rpx;padding-bottom:20rpx;width:100%;">
+                <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-right:40rpx;'>
+                    <text style='font-size:32rpx;'>{{user_name}}</text>
+                    <image src='../../imgs/modify.png' style='width:32rpx;height:32rpx;border-radius:12rpx;' bindtap='nav_to_update_member_info'></image>
+                </view>
+                <text style='font-size:28rpx;'>导游会员</text>
+            </view>
+        </view>
+    </block>
+    <!-- 我的订单 -->
+    <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_order'>
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+            <image src="../../imgs/my_order.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+            <text style='margin-left:20rpx;'>我的订单</text>
+        </view>
+        <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+    </view>
+
+    <!-- 我的专属律师 -->
+    <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_my_lawer'>
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+            <image src="../../imgs/lawer.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+            <text style='margin-left:20rpx;'>我的专属律师</text>
+        </view>
+        <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+    </view>
+
+    <!-- 关于旅法宝 -->
+    <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_about_us'>
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+            <image src="../../imgs/about_us.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+            <text style='margin-left:20rpx;'>关于旅法宝</text>
+        </view>
+        <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+    </view>
+
+    <!-- 管理员更新价格 -->
+    <block wx:if="{{is_admin == 2}}">
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_update_price'>
+            <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+                <image src="../../imgs/price.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+                <text style='margin-left:20rpx;'>服务价格管理</text>
+            </view>
+            <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+        </view>
+
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_daoyou'>
+            <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+                <image src="../../imgs/tour.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+                <text style='margin-left:20rpx;'>导游会员</text>
+            </view>
+            <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+        </view>
+
+        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-left:20rpx;padding-right:20rpx;background-color:white;padding-top:12rpx;padding-bottom:12rpx;margin-top:24rpx;margin-bottom:24rpx;' bindtap='nav_to_admin_send_msg'>
+            <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+                <image src="../../imgs/msg.png" style="width:48rpx;height:48rpx;border-radius:12rpx;"></image>
+                <text style='margin-left:20rpx;'>信息推送</text>
+            </view>
+            <image src="../../imgs/right.png" style="width:20rpx;height:28rpx;border-radius:12rpx;"></image>
+        </view>
+    </block>
+    
+</view>

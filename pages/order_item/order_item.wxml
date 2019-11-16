@@ -1,0 +1,212 @@
+<!-- 展示 用户提交的信息 的页面，用户在未结单之前都可以，修改 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="update_order_item">
+        <input type='name' name="service_id" value='{{service_id}}' style='display:none;'></input>
+        <!-- 购买会员单位类  单位全称、单位logo、联系人姓名、联系人电话、上传营业执照-->
+        <block wx:if="{{service_id >= 1}}">
+            <block wx:if="{{service_id <= 4}}">
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                    <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                    <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                </view>
+
+                <view style='display:flex;flex-direction:column;margin-top:10px;justify-content:center;align-items:center;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位logo:</label>
+                    <image style="border-radius:12rpx;" src="{{company_logo}}" data-img-url="{{company_logo}}" bindtap="preview_img"></image>
+                    <block wx:if="{{is_admin == 1}}">
+                        <button bindtap="change_company_img" data-type="1">更新单位logo</button>
+                    </block>
+                </view>
+
+                <view style='display:flex;flex-direction:column;margin-top:10px;justify-content:center;align-items:center;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>营业执照:</label>
+                    <image style="border-radius:12rpx;" src="{{business_license}}" data-img-url="{{business_license}}" bindtap="preview_img"></image>
+                    <block wx:if="{{is_admin == 1}}">
+                        <button bindtap="change_company_img" data-type="2">更新营业执照</button>
+                    </block>
+                </view>
+            </block>
+        </block>
+
+        <!-- service_id == 5 购买旅游投诉意见书 -->
+        <block wx:if="{{service_id == 5}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view>
+                <label style='font-weight:bold;font-size:32rpx;'>问题描述:</label>
+                <textarea name="problem_desc" placeholder="{{problem_desc}}" value="{{problem_desc}}" style='border:1rpx solid #F1F1F1;width:100%;'></textarea>
+            </view>
+
+            <block wx:if="{{is_admin == 1}}">
+                <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;' bindtap='upload_logo'>
+                    <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+                    <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" bindtap="choose_and_upload"></image>
+                    <text>已上传{{upload_file_num}}个文件</text>
+                </view>
+            </block>
+            <block wx:if="{{is_admin == 2}}">
+                <block wx:for="{{user_upload_imgs}}" wx:for-item="user_upload_img_item">
+                    <image style="border-radius:12rpx;margin-top:8rpx;margin-bottom:8rpx;" src="{{user_upload_img_item}}" data-img-url="{{user_upload_img_item}}" bindtap="preview_img"></image>
+                </block>
+            </block>
+        </block>
+    
+        <!--  购买重大纠纷处理律师出面、旅游案件律师法院出庭： -->
+        <block wx:if="{{service_id == 6 || service_id == 7}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                    <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                    <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view>
+                <label style='font-weight:bold;font-size:32rpx;'>问题描述:</label>
+                <textarea name="problem_desc" placeholder="{{problem_desc}}" value="{{problem_desc}}" style='border:1rpx solid #F1F1F1;width:100%;'></textarea>
+            </view>
+
+            <block wx:if="{{is_admin == 1}}">
+                <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                    <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+                    <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" bindtap="choose_and_upload"></image>
+                    <text>已上传{{upload_file_num}}个文件</text>
+                </view>
+            </block>
+            <block wx:if="{{is_admin == 2}}">
+                <block wx:for="{{user_upload_imgs}}" wx:for-item="user_upload_img_item">
+                    <image style="border-radius:12rpx;margin-top:8rpx;margin-bottom:8rpx;" src="{{user_upload_img_item}}" data-img-url="{{user_upload_img_item}}" bindtap="preview_img"></image>
+                </block>
+            </block>
+            <!-- 预约时间 -->
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预约时间:</label>
+                <picker mode="date" value="{{date}}" start="2019-03-01" end="2030-09-01" bindchange="bindDateChange" style="width:60%;">
+                    <input type="name" name="plan_date" value="{{plan_date}}" style='border:1rpx solid #F1F1F1;'>{{plan_date}}</input>
+                </picker>
+            </view>
+        </block>
+
+        <!-- 购买企业法律培训 8 -->
+        <block wx:if="{{service_id == 8}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <!-- 预约时间 -->
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预约时间:</label>
+                <picker mode="date" value="{{date}}" start="2019-03-01" end="2030-09-01" bindchange="bindDateChange">
+                    <input name="plan_date" type="name" value="{{plan_date}}" style='border:1rpx solid #F1F1F1;'>{{plan_date}}</input>
+                </picker>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>培训地点:</label>
+                <input type='name' name="plan_place" placeholder='{{plan_place}}' value='{{plan_place}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>预计培训人数:</label>
+                <input type='number' name="plan_num" placeholder='{{plan_num}}' value='{{plan_num}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+        </block>
+
+        <!-- 购买合同及劳资审查 9 -->
+        <block wx:if="{{service_id == 9}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>单位全称:</label>
+                <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;'>
+                <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <block wx:if="{{is_admin == 1}}">
+                <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                    <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+                    <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" bindtap="choose_and_upload"></image>
+                    <text>已上传{{upload_file_num}}个文件</text>
+                </view>
+            </block>
+            <block wx:if="{{is_admin == 2}}">
+                <block wx:for="{{user_upload_imgs}}" wx:for-item="user_upload_img_item">
+                    <image style="border-radius:12rpx;margin-top:8rpx;margin-bottom:8rpx;" src="{{user_upload_img_item}}" data-img-url="{{user_upload_img_item}}" bindtap="preview_img"></image>
+                </block>
+            </block>
+        </block>
+        
+        <!--  -->
+        <block wx:if="{{is_admin == 1}}">
+            <block wx:if="{{order_status == 1}}">
+                <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:20px;'>
+                    <input type='name' name="is_admin" value='1' style='margin-left:8px;border:1rpx solid #F1F1F1;display:none;'></input>
+                    <button form-type='submit' style='width:100%;background-color:green;color:white;'>保存</button>
+                </view>
+            </block>
+            <block wx:if="{{order_status == 2}}">
+                <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:20px;'>
+                    <button form-type='submit' style='width:100%;background-color:green;color:white;'>处理结束,不可更改</button>
+                </view>
+            </block>
+        </block>
+        <block wx:if="{{is_admin == 2}}">
+            <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:20px;'>
+                <input type='name' name="is_admin" value='2' style='margin-left:8px;border:1rpx solid #F1F1F1;display:none;'></input>
+                <button form-type='submit' style='width:100%;background-color:green;color:white;'>确认处理结束</button>
+            </view>
+        </block>
+        <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;">
+            <text>保存图片,加律师微信后详询</text>
+            <image src="https://xcx.hnfabang.cn/xcx/yulvfabao/imgs/lawer_qrcode_0415.jpg" style="width:128rpx;height:128rpx;" bindtap="preview_lawer_img"></image>
+        </view>
+    </form>    
+</view>

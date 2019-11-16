@@ -1,0 +1,35 @@
+<!--pages/about_us/about_us.wxml-->
+<!-- 关于旅法宝 小程序logo、产品介绍、旅法宝提供的主要服务、律师的个人微信二维码 -->
+<view>
+    <!-- 小程序logo -->
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;background-color:white;'>
+        <image src='../../imgs/logo.png' style='width:128rpx;height:128rpx;'></image>
+    </view>
+    <!-- 公司介绍 -->
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:96%;padding-left:2%;padding-right:2%;background-color:white;padding-bottom:20rpx;'>
+        <text style='padding-top:10rpx;padding-bottom:10rpx;'>公司介绍</text>
+        <text style='font-size:32rpx;text-indent:60rpx;'>{{desc_1}}</text>
+        <text style='font-size:32rpx;text-indent:60rpx;'>{{desc_2}}</text>
+        <text style='font-size:32rpx;text-indent:60rpx;'>{{desc_3}}</text>
+        <text style='font-size:32rpx;text-indent:60rpx;'>{{desc_4}}</text>
+    </view>
+
+    <!-- 提供的服务 -->
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:96%;padding-left:2%;padding-right:2%;margin-top:12rpx;padding-top:24rpx;padding-bottom:12rpx;background-color:white;'>
+        <text style='padding-bottom:10rpx;'>我们提供的服务</text>
+        <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;'>
+            <text style='font-size:32rpx;text-indent:60rpx;'>{{service}}</text>
+        </view>
+    </view>
+
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;background-color:white;margin-top:12rpx;padding-top:24rpx;padding-bottom:24rpx;' bindtap="show_lawer_wechat_code">
+        <text style='padding-top:10rpx;padding-bottom:10rpx;font-size:28rpx;font-weight:bold;'>保存图片,加律师微信后详询</text>
+        <image src='https://xcx.hnfabang.cn/xcx/yulvfabao/imgs/lawer_qrcode_0415.jpg' style='width:128rpx;height:128rpx;'></image>
+    </view>
+
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;background-color:white;margin-top:12rpx;padding-top:24rpx;padding-bottom:24rpx;margin-bottom:24rpx;' >
+        <text style='padding-top:10rpx;padding-bottom:10rpx;font-size:28rpx;'>律师服务电话:</text>
+        <text style='font-size:32rpx;font-weight:bold;padding-top:12rpx;padding-bottom:12rpx;' data-phone="13733173086" bindtap="dial_phone">137 3317 3086</text>
+        <text style='font-size:32rpx;font-weight:bold;padding-top:12rpx;padding-bottom:12rpx;' data-phone="0371-55681929" bindtap="dial_phone">0371-55681929</text>
+    </view>
+</view>

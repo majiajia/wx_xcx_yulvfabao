@@ -1,0 +1,38 @@
+<!--pages/daoyou_lawer/daoyou_lawer.wxml-->
+<view>
+    <block wx:if="{{is_admin == 1}}">
+        <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;background-color:white;margin-top:12rpx;'>
+            <text bindtap='dial_phone' data-phone="13733173086">律师服务电话:137 3317 3086(同微信)</text>
+        </view>
+
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:12rpx;margin-bottom:12rpx;'>
+            <button type='primary' bindtap='nav_to_submit_daoyou_lawer'>开始咨询</button>
+        </view>
+    </block>
+    
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;background-color:white;margin-top:12rpx;'>
+        <text style='font-weight:bold;'>沟通记录</text>        
+    </view>
+
+    <block wx:if="{{daoyou_lawer_list_empty}}">
+        <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;margin-top:12rpx;margin-bottom:12rpx;background-color:white;">
+            <text>暂无记录</text>
+        </view>
+    </block>
+    <block wx:else>
+        <view style='display:flex;flex-direction:column;margin-top:12rpx;margin-bottom:12rpx;'>
+            <block wx:for="{{daoyou_lawer_list}}" wx:for-item="daoyou_lawer_item">
+                <view style='display:flex;flex-direction:row;justify-content:space-around;margin-top:12rpx;margin-bottom:12rpx;padding-top:12rpx;padding-bottom:12rpx;padding-left:12rpx;background-color:white;' data-id="{{daoyou_lawer_item.id}}" bindtap='nav_to_daoyou_lawer_item'>
+                    <text style="color:grey;">提问时间:{{daoyou_lawer_item.ask_time}}</text>
+                    <block wx:if="{{daoyou_lawer_item.status == 1}}">
+                        <text style="color:grey;">未回复</text>
+                    </block>
+                    <block wx:elif="{{daoyou_lawer_item.status == 2}}">
+                        <text style="color:grey;">已回复</text>
+                    </block>
+                </view>
+            </block>
+        </view>
+    </block>
+    
+</view>

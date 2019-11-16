@@ -1,0 +1,284 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.4",
+	"appid": "wx37f5e9ac35389124",
+	"projectname": "yulvfabao",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 33,
+			"list": [
+				{
+					"id": -1,
+					"name": "me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "member_info_update",
+					"pathName": "pages/member_info_update/member_info_update",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "about_us",
+					"pathName": "pages/about_us/about_us",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "order_item",
+					"pathName": "pages/order_item/order_item",
+					"query": "id=75",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "case",
+					"pathName": "pages/case/case",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "service_item",
+					"pathName": "pages/service_item/service_item",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "lawer",
+					"pathName": "pages/lawer/lawer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "submit_order",
+					"pathName": "pages/submit_order/submit_order",
+					"query": "order_id=1552878751_100012_8000_3&service_id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "submit_order_success",
+					"pathName": "pages/submit_order_success/submit_order_success",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "submit_order_success",
+					"pathName": "pages/submit_order_success/submit_order_success",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "case_item",
+					"pathName": "pages/case_item/case_item",
+					"query": "id=17",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "about_us",
+					"pathName": "pages/about_us/about_us",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "upload_demo",
+					"pathName": "pages/upload_demo/upload_demo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "case_item",
+					"pathName": "pages/case_item/case_item",
+					"query": "id=28",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "about_us",
+					"pathName": "pages/about_us/about_us",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "submit_order_success",
+					"pathName": "pages/submit_order_success/submit_order_success",
+					"query": "order_id=1551693249_100010_4550_3&service_id=9",
+					"scene": null
+				},
+				{
+					"id": 20,
+					"name": "case",
+					"pathName": "pages/case/case",
+					"query": "id=17",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order_item",
+					"pathName": "pages/order_item/order_item",
+					"query": "id=45",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "update_price",
+					"pathName": "pages/update_price/update_price",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my_lawer",
+					"pathName": "pages/my_lawer/my_lawer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "daoyou_list",
+					"pathName": "pages/daoyou_list/daoyou_list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "daoyou_lawer",
+					"pathName": "pages/daoyou_lawer/daoyou_lawer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "daoyou_lawer_item",
+					"pathName": "pages/daoyou_lawer_item/daoyou_lawer_item",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "submit_daoyou_lawer_item",
+					"pathName": "pages/submit_daoyou_lawer_item/submit_daoyou_lawer_item",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "daoyou_lawer_list",
+					"pathName": "pages/daoyou_lawer/daoyou_lawer",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "answer_daoyou_lawer_",
+					"pathName": "pages/answer_daoyou_lawer_item/answer_daoyou_lawer_item",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "daoyou_lawer_item",
+					"pathName": "pages/daoyou_lawer_item/daoyou_lawer_item",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my_lawer",
+					"pathName": "pages/my_lawer/my_lawer",
+					"scene": null
+				}
+			]
+		}
+	}
+}

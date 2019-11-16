@@ -1,0 +1,52 @@
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="update_user_case">
+        <view>
+            <label>请描述案件相关情况</label>
+            <textarea name="problem_desc" placeholder="{{problem_desc}}" value="{{problem_desc}}" style='border:1rpx solid #F1F1F1;'></textarea>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:10px;'>
+            <label style='font-weight:bold;'>联系人姓名:</label>
+            <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:10px;'>
+            <label style='font-weight:bold;'>联系人电话:</label>
+            <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+            <label style='font-weight:bold;'>相关材料:</label>
+            <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" bindtap="choose_and_upload"></image>
+            <text>已上传{{upload_file_num}}个文件</text>
+        </view>
+        
+        <!-- 如果是管理员查看这个界面,则应该把这些图片显示出来，并且点击后可预览 -->
+        <block wx:if="{{is_admin == 2}}">             
+            <view style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                <block wx:for="{{user_upload_imgs}}" wx:for-item="user_upload_img_item">
+                    <image src="{{user_upload_img_item}}" bindtap="pre_img" data-url="{{user_upload_img_item}}"></image>
+                </block>
+            </view>
+        </block>
+        <block wx:if="{{is_admin == 1}}">
+            <block wx:if="{{case_status == 1}}">
+                <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+                    <input type='name' name="is_admin" value='1' style='margin-left:8px;border:1rpx solid #F1F1F1;display:none;'></input>
+                    <button form-type='submit' style='width:100%;background-color:green;color:white;'>保存</button>
+                </view>
+            </block>
+            <block wx:if="{{case_status == 2}}">
+                <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+                    <button form-type='submit' style='width:100%;background-color:green;color:white;'>处理结束,不可更改</button>
+                </view>
+            </block>
+        </block>
+        <block wx:if="{{is_admin == 2}}">
+            <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+                <input type='name' name="is_admin" value='2' style='margin-left:8px;border:1rpx solid #F1F1F1;display:none;'></input>
+                <button form-type='submit' style='width:100%;background-color:green;color:white;'>确认处理结束</button>
+            </view>
+        </block>        
+    </form>    
+</view>

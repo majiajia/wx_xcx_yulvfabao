@@ -1,0 +1,9 @@
+<button bindtap='chooseImg'>选择图片</button>
+<view>
+<image src='{{img_l}}' bindtap='preview_img'></image>
+</view>
+<button bindtap='up_img'>上传</button>
+
+<button bindtap='download_img'>下载图片</button>
+
+<button bindtap='download_word'>下载word</button>

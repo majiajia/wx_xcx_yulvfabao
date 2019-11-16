@@ -1,0 +1,56 @@
+<!--pages/lawer/lawer.wxml-->
+<!-- 公司信息介绍 -->
+<view style='padding-left:20rpx;display:flex;flex-direction:column;background-color:white;padding-bottom:12rpx;padding-top:12rpx;'>
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+        <text style='font-size:36rpx;font-weight:bold;'>公司简介</text>
+    </view>
+    <view style='text-indent:60rpx;font-size:32rpx;'>
+        <text>河南法帮法律咨询服务有限公司</text><text style='color:red;' bindtap='show_company_license'>(点击查看营业执照)</text><text>是立足河南的专业法律咨询公司，我公司有多名经验丰富、办案能力的优秀律师。最专业的旅游纠纷处理律师团队为您剔除风险、保驾护航,解决你在旅游经营中遇到的难题。</text>
+    </view>
+</view>
+
+<view style='padding-left:20rpx;display:flex;flex-direction:column;background-color:white;margin-top:12rpx;margin-bottom:12rpx;padding-top:12rpx;padding-bottom:12rpx;'>
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+        <text style='font-size:36rpx;font-weight:bold;'>专家律师</text>
+    </view>
+    <block wx:for="{{primary_lawers}}" wx:for-item="primary_lawer_item">
+        <text style='font-size:32rpx;text-indent:60rpx;'>{{primary_lawer_item.desc}}</text>
+    </block>
+</view>
+
+<view style='padding-left:20rpx;display:flex;flex-direction:column;background-color:white;margin-top:12rpx;margin-bottom:12rpx; padding-top:12rpx;padding-bottom:12rpx;'>
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+        <text style='font-size:36rpx;font-weight:bold;'>我们的位置</text>
+    </view>
+    <view style='padding-left:20rpx;font-size:32rpx;text-indent:60rpx;'>
+        <text>地址:河南省郑州市郑东新区商都路与中兴南路交叉口建正东方中心A2408</text>
+    </view>
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;' bindtap='nav_to_map'>
+        <image src='../../imgs/map.png' style='width:40rpx;height:40rpx;border-radius:12rpx;'></image>
+        <text style='font-size:36rpx;margin-left:12rpx;'>地图导航</text>
+    </view>
+</view>
+<!-- 律师信息列表 -->
+
+<view style='display:flex;flex-direction:row;align-items:center;background-color:white;margin-top:12rpx;margin-bottom:12rpx;padding-top:12rpx;padding-bottom:12rpx;padding-left:18rpx;'>
+    <image src="../../imgs/index/6.png" style='width:56rpx;height:56rpx;border-radius:12rpx;'></image>
+    <text style='font-size:32rpx;font-weight:bold;'>专业旅游律师</text>
+</view>
+
+<block wx:for="{{lawer_list}}" wx:for-item="lawer_item"> 
+    <view style='display:flex;flex-direction:column;padding-left:20rpx;padding-bottom:20rpx;padding-top:20rpx;border-bottom:1rpx solid #F1F1F1;background-color:white;'>
+        <view style='display:flex;flex-direction:row;align-items:center;'>
+            <image src='{{lawer_item.avatar}}' style='width:64rpx;height:64rpx;border-radius:12rpx;border-radius:12rpx;'></image>
+            <view style='display:flex;flex-direction:column;margin-left:20rpx;font-size:32rpx;'>
+                <text>{{lawer_item.name}}</text>
+                <text>{{lawer_item.area}}</text>
+            </view>
+        </view>
+        <view style='font-size:32rpx;color:grey;'>
+            <text>{{lawer_item.desc}}</text>
+        </view>
+    </view>
+</block>
+
+<view style='height:60rpx;'>
+</view>

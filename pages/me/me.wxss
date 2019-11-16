@@ -1,0 +1,35 @@
+/* pages/me/me.wxss */
+page {
+    background-color:#F8F8F8;
+}
+
+/* 非会员单位 */
+.userinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+}
+
+.userinfo-avatar {
+    width: 108rpx;
+    height: 108rpx;
+    margin: 20rpx;
+    border-radius: 10%;
+}
+
+.userinfo-nickname {
+    color: #aaa;
+}
+/* 会员单位 */
+.memberinfo {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    /* align-items: center; */
+}
+/* 会员信息修改按钮 */
+.memberinfo-mofidy-button {
+    width: 28rpx;
+    height: 28rpx;
+}

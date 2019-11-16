@@ -1,0 +1,4 @@
+/* pages/daoyou_lawer/daoyou_lawer.wxss */
+page {
+    background-color: #F1F1F1;   
+}

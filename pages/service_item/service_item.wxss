@@ -1,0 +1,4 @@
+/* pages/service_item/service_item.wxss */
+page {
+    background-color:#F8F8F8;
+}

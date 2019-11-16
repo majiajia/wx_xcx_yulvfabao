@@ -1,0 +1,33 @@
+<!--pages/daoyou_lawer/daoyou_lawer.wxml-->
+<view>
+    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;background-color:white;margin-top:12rpx;'>
+        <text bindtap='dial_phone' data-phone="13733173086">律师服务电话:137 3317 3086(同微信)</text>
+    </view>
+
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;background-color:white;margin-top:12rpx;'>
+        <text style='font-weight:bold;'>沟通详情</text>        
+    </view>
+
+    <view style='display:flex;flex-direction:column;justify-content:space-between;padding:24rpx;background-color:white;margin-top:12rpx;margin-bottom:12rpx;'>
+        <text style='text-align:justify;text-indent:36rpx;'>提问时间:{{ask_time}}</text>
+        <text style='text-align:justify;text-indent:36rpx;'><text style="color:red;">问:</text>{{question}}</text>
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;font-size:32rpx;'>
+            <text>相关材料:</text>
+            <block wx:if="{{img_url_list_empty}}">
+                <text>无相关材料</text>
+            </block>
+            <block wx:else>
+                <view style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                    <block wx:for="{{img_url_list}}" wx:for-item="img_url_item">
+                        <image src="{{img_url_item}}" bindtap='pre_img' data-url="{{img_url_item}}" style="margin-top:8rpx;margin-bottom:8rpx;"></image>
+                        <!-- <text bindtap='pre_img' data-url="{{img_url_item.url}}">点击查看提交的材料{{img_url_item.id}}</text> -->
+                    </block>
+                </view>
+            </block>
+        </view>
+        <view style="display:flex;flex-direction:column;">
+            <text style="text-align:justify;text-indent:36rpx;color:red;">专业律师回复:</text>
+            <text style='text-align:justify;text-indent:36rpx;'>{{answer}}</text>
+        </view>
+    </view>
+</view>

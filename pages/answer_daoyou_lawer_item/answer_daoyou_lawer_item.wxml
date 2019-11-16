@@ -1,0 +1,38 @@
+<!--pages/submit_daoyou_lawer_item/submit_daoyou_lawer_item.wxml-->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="answer_daoyou_lawer_item">
+        <input type='name' name="id" value='{{id}}' style='display:none;'></input>      
+        <view>
+            <label style='font-weight:bold;font-size:32rpx;'>问题描述:</label>
+            <textarea maxlength="-1" disabled='false' name="question" placeholder="{{question}}" value="{{question}}" style='border:1rpx solid #F1F1F1;width:100%;text-align:justify;'></textarea>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+            <label style='font-weight:bold;font-size:32rpx;'>相关材料:</label>
+        </view>
+        
+        <block wx:if="{{img_url_list_empty}}">
+            <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;margin-top:12rpx;margin-bottom:12rpx;">
+                <text style="font-size:32rpx;color:grey;">无相关资料</text>
+            </view>
+        </block>
+        <block wx:else>
+            <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;'>
+                <block wx:for="{{img_url_list}}" wx:for-item="img_url_item">
+                    <image src='{{img_url_item}}' bindtap="preview_img" data-url="{{img_url_item}}" style="margin-top:8rpx;margin-bottom:8rpx;"></image>
+                </block>
+            </view>
+        </block>
+        
+        
+        <view>
+            <label style='font-weight:bold;font-size:32rpx;'>回复:</label>
+            <textarea maxlength="-1" name="answer" placeholder="{{answer}}" value="{{answer}}" style='border:1rpx solid #F1F1F1;width:100%;text-align:justify;'></textarea>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:20px;'>
+            <input type='name' name="is_admin" value='2' style='margin-left:8px;border:1rpx solid #F1F1F1;display:none;'></input>
+            <button form-type='submit' style='width:100%;background-color:green;color:white;'>提交</button>
+        </view>
+    </form>
+</view>

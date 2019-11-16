@@ -1,0 +1,18 @@
+<!-- 展示 用户提交的信息 的页面，用户在未结单之前都可以，修改 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <input type='name' name="service_id" value='{{service_id}}' style='display:none;'></input>
+    <view style='display:flex;flex-direction:row;margin-top:10px;'>
+        <label style='font-weight:bold;font-size:32rpx;'>联系人姓名:</label>
+        <input type='name' disabled="true" name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+    </view>
+
+    <view style='display:flex;flex-direction:row;margin-top:10px;'>
+        <label style='font-weight:bold;font-size:32rpx;'>联系人电话:</label>
+        <input type='number' disabled="true" name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+    </view>
+
+    <view style='display:flex;flex-direction:row;margin-top:10px;'>
+        <image src="{{daoyou_license_url}}" bindtap="preview_img" data-url="{{daoyou_license_url}}" style="margin-top:8rpx;margin-bottom:8rpx;"></image>
+    </view>
+    
+</view>

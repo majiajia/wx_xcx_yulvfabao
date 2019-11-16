@@ -1,0 +1,60 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/service_item/service_item",
+        "pages/submit_order/submit_order",
+        "pages/submit_order_success/submit_order_success",
+        "pages/lawer/lawer",
+        "pages/case/case",
+        "pages/case_item/case_item",
+        "pages/me/me",
+        "pages/my_lawer/my_lawer",
+        "pages/daoyou_list/daoyou_list",
+        "pages/daoyou_item/daoyou_item",
+        "pages/member_info_update/member_info_update",
+        "pages/member_info/member_info",
+        "pages/order/order",
+        "pages/order_item/order_item",
+        "pages/map/map",
+        "pages/daoyou_lawer/daoyou_lawer",
+        "pages/daoyou_lawer_item/daoyou_lawer_item",
+        "pages/submit_daoyou_lawer_item/submit_daoyou_lawer_item",
+        "pages/answer_daoyou_lawer_item/answer_daoyou_lawer_item",
+        "pages/update_price/update_price",
+        "pages/upload_demo/upload_demo",
+        "pages/admin_send_msg/admin_send_msg",
+        "pages/about_us/about_us"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "律法宝",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/lawer/lawer",
+                "text": "大咖律师"
+            },
+            {
+                "pagePath": "pages/case/case",
+                "text": "其他案件"
+            },
+            {
+                "pagePath": "pages/me/me",
+                "text": "会员中心"
+            }
+        ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
+}

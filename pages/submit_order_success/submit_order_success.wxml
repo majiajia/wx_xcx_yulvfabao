@@ -1,0 +1,14 @@
+<!-- 用户提交订单成功后,需要显示提交成功，显示律师的微信二维码,提示加律师二维码继续咨询 -->
+<view style='display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:100rpx;'>
+    <icon type='success' size='64'></icon>
+    <view style='padding-top:100rpx;padding-bottom:100rpx;padding-left:40rpx;padding-right:40rpx;display:flex;flex-direction:column;align-items:center;justify-content:center;'>
+        <text>提交咨询信息成功,保存图片,添加律师微信后,与律师一对一详细沟通!</text>
+    </view>
+    <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;" bindtap="show_lawer_wechat_code">
+        <image src='https://xcx.hnfabang.cn/xcx/yulvfabao/imgs/lawer_qrcode_0415.jpg' style='width:256rpx;height:256rpx;border-radius:12rpx;'></image>
+    </view>
+    
+    <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:64rpx;" bindtap="nav_to_index">
+        <button>好的,我知道了</button>
+    </view>
+</view>

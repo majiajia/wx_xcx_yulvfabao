@@ -1,0 +1,107 @@
+<view>
+    <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+        <text style='font-size:48rpx;'>{{service_name}}</text>
+    </view>
+
+    <view style='display:flex;flex-direction:column;padding-left:12rpx;padding-right:12rpx;background-color:white;padding-top:24rpx;padding-bottom:24rpx;'>
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-bottom:12rpx;'>
+            <text style='font-size:36rpx;font-weight:bold;'>服务简介</text>
+        </view>
+        <view style='display:flex;flex-direction:column;font-size:32rpx;'>
+            <textarea disabled="true" value="{{service_desc}}" style="width:100%;"></textarea>
+            <!-- <block wx:for="{{service_desc}}" wx:for-item="service_desc_item">
+                <text>{{service_desc_item}}</text>
+            </block> -->
+        </view>
+    </view>
+
+    <view style='display:flex;flex-direction:column;padding-left:12rpx;padding-right:12rpx;background-color:white;padding-top:24rpx;padding-bottom:24rpx;'>
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-bottom:12rpx;'>
+            <text style='font-size:36rpx;font-weight:bold;'>收费标准</text>
+        </view>
+        <view style='display:flex;flex-direction:column;font-size:32rpx;'>
+            <block wx:if="{{type == 1}}"> 
+                <block wx:if="{{price_member == 0}}">
+                    <text style='text-align:center;'>￥{{price_public}}/年</text>
+                </block>
+                <block wx:if="{{price_member != 0}}">
+                    <text style='text-align:center;'>￥{{price_member}}/年(会员)</text>
+                    <text style='text-align:center;'>￥{{price_public}}/年</text>
+                </block>
+            </block>
+            <block wx:if="{{type == 2}}">
+                <block wx:if="{{price_member == 0}}">
+                    <text style='text-align:center;'>￥{{price_member}}/次</text>
+                </block>
+                <block wx:if="{{price_member != 0}}">
+                    <block wx:if="{{service_id == 8}}">
+                        <text style='text-align:center;'>￥{{price_member}}/次</text>
+                    </block>
+                    <block wx:else>
+                        <text style='text-align:center;'>￥{{price_member}}/次(会员)</text>
+                        <text style='text-align:center;'>￥{{price_public}}/次(非会员)</text>
+                    </block>
+                </block>
+            </block>
+        </view>
+    </view>
+    
+    <!-- 下面这三个三选一 -->
+    <block wx:if="{{service_id > 4}}">
+        <block wx:if="{{service_id == 8}}">
+            <block wx:if="{{status == 1}}">
+                <view style='display:flex;flex-direction:row;background-color:white;' bindtap='user_pay' data-service-id="{{service_id}}">
+                    <button style='width:80%;background-color:green;color:white;'>免费预约企业综合法律服务</button>
+                </view>
+            </block>
+            <block wx:if="{{status == 2}}">
+                <view style='display:flex;flex-direction:row;background-color:white;' bindtap='user_pay' data-service-id="{{service_id}}">
+                    <button style='width:60%;background-color:green;color:white;'>预约企业综合法律服务</button>
+                </view>
+            </block>
+        </block>
+        <block wx:elif="{{service_id == 9}}">
+            <block wx:if="{{status == 3}}">
+                <view style='display:flex;flex-direction:row;background-color:white;' data-service-id="{{service_id}}">
+                    <button style='width:50%;background-color:green;color:white;' bindtap="nav_to_daoyou_lawer">和专属律师沟通</button>
+                </view>
+            </block>
+            <block wx:if="{{status == 2}}">
+                <view style='display:flex;flex-direction:row;background-color:white;' bindtap='user_pay' data-service-id="{{service_id}}">
+                    <button style='width:50%;background-color:green;color:white;'>立刻成为顾问单位</button>
+                </view>
+            </block>
+        </block>
+        <block wx:else>
+            <view style='display:flex;flex-direction:row;background-color:white;' bindtap='user_pay' data-service-id="{{service_id}}">
+                <button style='width:50%;background-color:green;color:white;'>马上咨询</button>
+            </view>
+        </block>
+    </block>
+
+    <block wx:if="{{service_id >= 1 && service_id <= 4}}">
+        <block wx:if="{{status == 3}}">
+            <view style='display:flex;flex-direction:row;background-color:white;' data-service-id="{{service_id}}">
+                <button style='width:50%;background-color:green;color:white;'>在会员有效期内</button>
+            </view>
+        </block>
+        
+        <block wx:if="{{status == 2}}">
+            <view style='display:flex;flex-direction:row;background-color:white;' bindtap='user_pay' data-service-id="{{service_id}}">
+                <button style='width:50%;background-color:green;color:white;'>立刻成为顾问单位</button>
+            </view>
+        </block>
+    </block>
+    
+    <view style='display:flex;flex-direction:column;padding-left:12rpx;padding-right:12rpx;background-color:white;padding-top:24rpx;padding-bottom:24rpx;'>
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items:center;padding-bottom:12rpx;'>
+            <text style='font-size:36rpx;font-weight:bold;'>提供的服务</text>
+        </view>
+        <view style='display:flex;flex-direction:column;font-size:32rpx;'>
+            <textarea disabled="true" value="{{service_detail}}" style="width:100%;"></textarea>
+            <!-- <block wx:for="{{service_detail}}" wx:for-item="service_detail_item">
+                <text>{{service_detail_item}};</text>
+            </block> -->
+        </view>
+    </view>
+</view>

@@ -1,0 +1,39 @@
+<!-- 修改会员单位的logo 联系人姓名 联系人电话 单位名称不可更改 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="update_price">
+        <block wx:for="{{service_cfg_list}}" wx:for-item="service_cfg_item">
+            <view style='display:flex;flex-direction:column;margin-top:10px;justify-content:center;align-items:center;border:1rpx solid red;border-radius:12rpx;;padding:12rpx;'>
+                <block wx:if="{{service_cfg_item.type == 1}}">
+                    <label style='font-weight:bold;'>{{service_cfg_item.name}}(元/年):</label>
+                    <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+                        <text>价   格</text>
+                        <input type='number' name="service_{{service_cfg_item.id}}_price" placeholder='{{service_cfg_item.price_member}}' value='{{service_cfg_item.price_public}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                    </view>
+                </block>
+                <block wx:if="{{service_cfg_item.type == 2}}">
+                    <label style='font-weight:bold;'>{{service_cfg_item.name}}(元/次):</label>
+                    <block wx:if="{{service_cfg_item.id == 8}}">
+                        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+                            <text>价   格</text>
+                            <input type='number' name="service_{{service_cfg_item.id}}_price" placeholder='{{service_cfg_item.price_public}}' value='{{service_cfg_item.price_member}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:12rpx;padding-bottom:12rpx;'>
+                            <text>会    员</text>
+                            <input type='number' name="service_{{service_cfg_item.id}}_member_price" placeholder='{{service_cfg_item.price_member}}' value='{{service_cfg_item.price_member}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                        </view>
+                        <view style='display:flex;flex-direction:row;justify-content:space-between;align-items:center;'>
+                            <text>非会员</text>
+                            <input type='number' name="service_{{service_cfg_item.id}}_public_price" placeholder='{{service_cfg_item.price_public}}' value='{{service_cfg_item.price_public}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+                        </view>
+                    </block>
+                </block>
+            </view>
+        </block>
+        
+        <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+            <button form-type='submit' style='width:100%;background-color:green;color:white;'>下一步</button>
+        </view>
+    </form>
+</view>

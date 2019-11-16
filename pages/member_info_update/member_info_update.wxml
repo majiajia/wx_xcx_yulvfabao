@@ -1,0 +1,59 @@
+<!-- 修改会员单位的logo 联系人姓名 联系人电话 单位名称不可更改 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="update_member_info">
+        <view style="display:flex;flex-direction:row;justify-content:center;align-items:center;padding-top:12rpx;padding-bottom:12rpx;margin-top:12rpx;margin-bottom:12rpx;">
+            <text>{{member_type_name}}</text>
+        </view>
+        <block wx:if="{{is_company_daoyou == 1}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;'>
+                <label style='font-weight:bold;'>单位全称:</label>
+                <input type='name' name="company_name" placeholder='{{company_name}}' value='{{company_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+            
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;'>
+                <label style='font-weight:bold;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;'>
+                <label style='font-weight:bold;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+            
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                <label style='font-weight:bold;'>单位logo:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-type="1" bindtap="choose_and_upload"></image>
+            </view>
+            
+            <image style="border-radius:12rpx;" src="{{company_logo}}" data-img-url ="{{company_logo}}" bindtap="preview_img"></image>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                <label style='font-weight:bold;'>营业执照:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-type="2" bindtap="choose_and_upload"></image>
+            </view>
+            <image style="border-radius:12rpx;" src="{{business_license}}" data-img-url ="{{business_license}}" bindtap="preview_img"></image>
+        </block>
+        <block wx:if="{{is_company_daoyou == 2}}">
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;'>
+                <label style='font-weight:bold;'>联系人姓名:</label>
+                <input type='name' name="contact_name" placeholder='{{contact_name}}' value='{{contact_name}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;'>
+                <label style='font-weight:bold;'>联系人电话:</label>
+                <input type='number' name="contact_phone" placeholder='{{contact_phone}}' value='{{contact_phone}}' style='margin-left:8px;border:1rpx solid #F1F1F1;'></input>
+            </view>
+            
+            <view style='display:flex;flex-direction:row;margin-top:10px;justify-content:center;align-items:center;' bindtap='upload_logo'>
+                <label style='font-weight:bold;'>导游证:</label>
+                <image src="../../imgs/upload.png" style="width:64rpx;height:64rpx;border-radius:12rpx;" data-type="3" bindtap="choose_and_upload"></image>
+            </view>
+            
+            <image style="border-radius:12rpx;" src="{{license_url}}" data-img-url ="{{license_url}}" bindtap="preview_img"></image>
+        </block>
+
+        <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+            <button form-type='submit' style='width:100%;background-color:green;color:white;'>保存更改</button>
+        </view>    
+    </form>
+</view>

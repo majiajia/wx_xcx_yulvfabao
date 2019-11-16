@@ -1,0 +1,4 @@
+/* pages/case/case.wxss */
+page {
+    background-color:#F8F8F8;
+}

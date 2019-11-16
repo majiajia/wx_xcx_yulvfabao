@@ -1,0 +1,16 @@
+<!--pages/admin_send_msg/admin_send_msg.wxml-->
+<!-- 展示用户提交的信息 需要服务类别确定该显示哪些字段 -->
+<view style='display:flex;flex-direction:column;margin-left:6%;margin-right:6%;'>
+    <form bindsubmit="formSubmit" report-submit="true" bindsubmit="begin_send_msg">
+        <input type='name' name="service_id" value='{{service_id}}' style='display:none;'></input>
+        
+        <view>
+            <label style='font-weight:bold;font-size:32rpx;'>发送内容:</label>
+            <textarea name="content" placeholder="请输入要发送的内容" style='border:1rpx solid #F1F1F1;width:100%;'></textarea>
+        </view>
+
+        <view style='display:flex;flex-direction:row;margin-top:40px;margin-bottom:40px;'>
+            <button form-type='submit' style='width:100%;background-color:green;color:white;'>提交</button>
+        </view>
+    </form>
+</view>
